@@ -1,4 +1,4 @@
-""" mermaid
+```mermaid
 graph TD
     %% Network Layer
     WIFI[WiFi Nätverk]
@@ -41,4 +41,4 @@ graph TD
     style SH fill:#000000,stroke:#333,color:#fff
     style WIFI fill:#000000,stroke:#333,color:#fff
 
-    """
+    ```
