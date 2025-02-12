@@ -44,7 +44,7 @@ graph TD
     ```
 
 
-"""mermade
+'''mermade
 graph LR
     subgraph pico w
         A[モーションセンサー] --> B(モーションデータ)
@@ -64,4 +64,4 @@ graph LR
     L -- API --> M
 
     M --> N[ユーザー]
-"""
+'''
