@@ -1,22 +1,24 @@
 ```mermaid
 
-graph LR
-    subgraph pico w
-        A[Rörelsesensor] --> B(Rörelsedata)
-        C[Fuktighetssensor] --> D(Fuktighetsdata)
-        E[Kamera] --> F(Bild-/Videodata)
-        G[pico w] --> H(Loggdata)
-    end
+graph TD
+    A[Ultrasonic Sensor] -->|Kabel| B[Raspberry Pi med MQTT Broker]
+    B -->|MQTT| C[InfluxDB]
+    B -->|?? MQTT/HTTP| D[REST API]
+    C -->|Aggregera data| D
+    D -->|API| E[GUI Client]
+    B -->|SMS| F[Twilio]
+    F -->|Alert| G[User]
 
-    B --> I[DB för rörelsedata]
-    D --> J[Tidsseriedatabas]
-    F --> K[Molnlagring]
-    H --> L[Logghanteringssystem]
+    classDef db fill:#ffcc0099,stroke:#333
+    classDef server fill:#ff666699,stroke:#333
+    classDef gui fill:#66ccff55,stroke:#333
+    classDef twilio fill:#cc99ff99,stroke:#333
+    classDef mqtt fill:#99cc9988,stroke:#333
 
-    I -- API --> M[Hemsäkerhetsapp]
-    J -- API --> M
-    K -- API --> M
-    L -- API --> M
+    class C db
+    class D server
+    class E gui
+    class F twilio
+    class B mqtt
 
-    M --> N[Användare]
 ```
